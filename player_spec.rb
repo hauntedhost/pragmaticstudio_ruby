@@ -35,5 +35,31 @@ describe Player do
 		@player.health.should == @health - 10
 	end
 
+	context "with an initial health of 150" do
+		before do
+			$stdout = StringIO.new
+			@name = "sean"
+			@health = 150
+			@player = Player.new(@name, @health)
+		end
+		
+		it "is strong" do
+			@player.should be_strong
+		end
+	end
+
+	context "with an initial health of 100" do
+		before do
+			$stdout = StringIO.new
+			@name = "sean"
+			@health = 100
+			@player = Player.new(@name, @health)
+		end
+		
+		it "is wimpy" do
+			@player.should_not be_strong
+		end
+	end
+
 end
 

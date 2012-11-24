@@ -19,10 +19,12 @@ class Playlist
 		puts @movies
 		@movies.each do |movie|
 			number_rolled = roll_die
-			if number_rolled < 3
+
+			case number_rolled 
+			when 1..2
 				movie.thumbs_down
 				puts "#{movie.title} got a thumbs down."			
-			elsif number_rolled < 5
+			when 3..4
 				puts "#{movie.title} was skipped."
 			else
 				movie.thumbs_up
