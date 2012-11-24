@@ -16,11 +16,7 @@ class Movie
 	end
 
 	def status
-		if hit?
-			"hit"
-		else
-			"flop"
-		end		
+		hit? ? "hit" : "flop"
 	end
 
 	def thumbs_up

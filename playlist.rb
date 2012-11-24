@@ -10,12 +10,16 @@ class Playlist
 		@movies.push movie
 	end
 
-	def play
+	def play(number_rolled)
 		puts "#{@name}'s playlist:"
 		puts @movies
 		@movies.each do |movie|
-			movie.thumbs_up
-			puts movie
+			if number_rolled < 5
+				puts "#{movie.title} was skipped."
+			else
+				movie.thumbs_up
+				puts "#{movie.title} got a thumbs up."
+			end
 		end
 	end
 end
