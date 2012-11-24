@@ -11,6 +11,18 @@ class Movie
 		@title = new_title.capitalize
 	end
 
+	def hit?
+		@rank >= 10
+	end
+
+	def status
+		if hit?
+			"hit"
+		else
+			"flop"
+		end		
+	end
+
 	def thumbs_up
 		@rank += 1
 		puts "#{@title} just got a new thumbs up. ^___^"

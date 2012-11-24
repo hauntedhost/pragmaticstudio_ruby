@@ -39,5 +39,34 @@ describe Movie do
 		end
 	end
 
+	context "with a rank of at least 10" do
+		before do
+			@movie = Movie.new("goonies", 10)
+		end
+
+		it "is a hit" do
+			@movie.hit?.should be_true
+		end
+
+		it "has a hit status" do
+			@movie.status.should == "hit"
+		end
+	end
+
+	context "with a rank of less than 10" do
+		before do
+			@movie = Movie.new("goonies", 9)
+		end
+
+		it "is a flop" do
+			@movie.hit?.should be_false
+		end
+
+		it "has a flop status" do
+			@movie.status.should == "flop"
+		end
+
+	end
+
 end
 
