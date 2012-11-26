@@ -28,9 +28,13 @@ class Movie
 		@rank -= 1
 		puts "#{@title} just got a new thumbs down. ;____;"
 	end
-	
+
+	def <=>(other_movie)
+		other_movie.rank <=> @rank
+	end
+
 	def to_s
-		"#{@title} has a rank of #{@rank}."
+		"#{@title} has a rank of #{@rank} (#{status})."
 	end
 end
 
