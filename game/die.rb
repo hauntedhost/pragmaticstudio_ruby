@@ -1,6 +1,12 @@
 class Die
+	attr_reader :number
+	
+	def initialize
+		roll
+	end
+
 	def roll
-		0
+		@number = rand(1..6)
 	end
 end
 

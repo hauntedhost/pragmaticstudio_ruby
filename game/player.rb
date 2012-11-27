@@ -11,6 +11,10 @@ class Player
 		"I'm #{@name} with a health of #{@health} and a score of #{score}"
 	end
 
+	def print_status
+		puts "#{@name} (#{@health})" 
+	end
+
 	def strong?
 		@health > 100
 	end
@@ -27,5 +31,9 @@ class Player
 
 	def score
 		@health + @name.length
+	end
+
+	def <=>(other_player)
+		other_player.score <=> score
 	end
 end
