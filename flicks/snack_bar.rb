@@ -1,12 +1,3 @@
-#class Snack
-#	attr_reader :name, :carbs
-#
-#	def initialize(name, carbs)
-#		@name = name
-#		@carbs = carbs
-#	end
-#end
-
 Snack = Struct.new(:name, :carbs)
 
 module SnackBar
@@ -23,16 +14,8 @@ module SnackBar
 	end
 end
 
-#puts SnackBar::SNACKS
-snack = SnackBar.random
-puts "enjoy your #{snack.name} (#{snack.carbs} carbs)"
-
-#popcorn = Snack.new("popcorn", 20)
-#puts popcorn.name
-#puts popcorn.carbs
-
-#candy = Snack.new("candy", 15)
-#puts candy.name
-#puts candy.carbs
-
-
+if __FILE__ == $0
+	puts SnackBar::SNACKS
+	snack = SnackBar.random
+	puts "enjoy your #{snack.name} (#{snack.carbs} carbs)."
+end
