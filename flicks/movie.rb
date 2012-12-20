@@ -1,11 +1,18 @@
 class Movie
 	attr_accessor :title
-	attr_reader :rank
+	attr_reader :rank, :snack_carbs
 
 	def initialize(title, rank=0)
 		@title = title.capitalize
 		@rank = rank
 		@snack_carbs = Hash.new(0)
+	end
+
+	def each_snack
+		@snack_carbs.each do |name, carbs|
+			snack = Snack.new(name, carbs)
+			yield snack
+		end
 	end
 
 	def carbs_consumed

@@ -46,6 +46,17 @@ class Playlist
 		puts "#{total_carbs_consumed} total carbs consumed."
 		@movies.sort.each do |movie|
 			puts "\n#{movie.title}'s snack totals:"
+
+			# use custom iterator "each_snack" to loop through snack hash
+			movie.each_snack do	|snack|
+				puts "#{snack.carbs} total #{snack.name} carbs"
+			end
+
+			# this is how i would do the same thing above without the iterator
+			# movie.snack_carbs.each do |name, carbs|
+			#	puts "#{carbs} total #{name} carbs"
+			# end
+
 			puts "#{movie.carbs_consumed} grand total carbs."
 		end
 		

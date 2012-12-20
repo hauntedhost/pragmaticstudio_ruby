@@ -1,4 +1,4 @@
-require_relative "movie"
+require_relative "../movie"
 
 describe Movie do
 	before do

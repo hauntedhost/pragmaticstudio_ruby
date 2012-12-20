@@ -15,12 +15,18 @@ movies.each do |movie|
 	playlist1.add_movie(movie)
 end
 
-playlist1.play(3)
-playlist1.print_stats
-
-#playlist2 = Playlist.new("Fozzie")
-#playlist2.add_movie(movie3)
-#movie4 = Movie.new("gremlins", 15)
-#playlist2.add_movie(movie4)
-#playlist2.play
+loop do
+	puts "\nhow many viewings? ('[q]uit' to exit)."
+	answer = gets.chomp.downcase
+	case answer
+	when /^\d+$/
+		puts "\nenjoy your #{answer} viewings"
+		playlist1.play(answer.to_i)
+	when "quit", "q", "exit"
+		playlist1.print_stats
+		break
+	else
+		puts "\nplease enter a number or [q]uit."
+	end
+end
 
