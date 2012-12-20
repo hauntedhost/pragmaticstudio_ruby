@@ -1,23 +1,15 @@
-# open and close
-file = File.open("movies.csv")
-file.each_line do |line|
-	puts line
-end
-file.close
+require_relative 'movie'
 
-puts
-
-# each_line
-File.open("movies.csv") do |file|
-	puts "size = #{file.size}"
-	file.each_line do |line|
-		puts line
-	end
-end
-
-puts
-
-# succinct: readlines
+movies = Array.new
 File.readlines("movies.csv").each do |line|
-	puts line
+	title, rank = line.split(',')
+	movie = Movie.new(title, rank.to_i)
+	puts movie
+	movies << movie
+end
+
+File.open("movies_rankings.csv", "w") do |file|
+	movies.sort.each do |movie|
+		file.puts "#{movie.title},#{movie.rank}"
+	end
 end
