@@ -21,4 +21,3 @@ module TreasureTrove
 	end
 
 end
-
