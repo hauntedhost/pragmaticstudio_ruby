@@ -1,3 +1,4 @@
+require 'csv'
 require_relative "treasure_trove"
 
 class Player
@@ -14,8 +15,8 @@ class Player
 		"#{@title},#{@rank}"
 	end
 
-	def self.from_csv(line)
-		name, health = line.split(',')
+	def self.from_csv(string)
+		name, health = string.split(',')
 		Player.new(name, Integer(health))
 		# or simply: new(name, Integer(health))
 	end
@@ -60,7 +61,7 @@ class Player
 	def found_treasure(treasure)
 		@found_treasures[treasure.name] += treasure.points
 		puts "#{@name} found a #{treasure.name} worth #{treasure.points}."
-		puts "#{@name}'s treasures: #{@found_treasures}."
+		#puts "#{@name}'s treasures: #{@found_treasures}."
 	end
 
 	def points
