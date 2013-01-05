@@ -5,8 +5,9 @@ require_relative '../treasure_trove'
 describe ClumsyPlayer do
 	before do
 		@name = "klutz"
-		@health = 105
-		@player = ClumsyPlayer.new(@name, @health)
+		@initial_health = 100
+		@boost_factor = 5
+		@player = ClumsyPlayer.new(@name, @initial_health, @boost_factor)
 	end
 
 	it "only gets half the point value for each treasure" do
@@ -30,6 +31,15 @@ describe ClumsyPlayer do
 		end
 
 		yielded.should == [Treasure.new(:hammer, 75), Treasure.new(:crowbar, 200)]
+	end
+
+	it "has a boost factor" do
+		@player.boost_factor.should == @boost_factor
+	end
+
+	it "gets a boost factor for every w00t" do
+		@player.w00t
+		@player.health.should == @initial_health + (15 * @boost_factor)
 	end
 
 end
