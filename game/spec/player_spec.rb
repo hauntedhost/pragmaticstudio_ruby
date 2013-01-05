@@ -24,7 +24,6 @@ describe Player do
 		@player.to_s.should == "I'm Larry with health = 150, points = 100, and score = 250."
 	end
 
-	#it "computes a score as the sum of its health and length of name" do
 	it "computes a score as the sum of its health and points" do
 		@player.found_treasure(Treasure.new(:hammer, 50))
 		@player.found_treasure(Treasure.new(:hammer, 50))
@@ -76,6 +75,12 @@ describe Player do
 			Treasure.new(:hammer, 50),
 			Treasure.new(:bottle, 25)
 		]
+	end
+
+	it "can be created from a CSV string 'name,health'" do
+		sean = Player.from_csv("sean,150")
+		sean.name.should == "Sean"
+		sean.health.should == 150
 	end
 
 	context "with an initial health of 150" do
