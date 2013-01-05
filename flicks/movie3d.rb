@@ -17,16 +17,15 @@ class Movie3D < Movie
 	end
 end
 
-movie3d = Movie3D.new('glee', 5, 20)
-puts movie3d.title
-puts movie3d.rank
+if __FILE__ == $0
+	movie3d = Movie3D.new('glee', 5, 20)
+	puts movie3d.title
+	puts movie3d.rank
 
-movie3d.thumbs_up
-puts movie3d.rank
+	movie3d.thumbs_up
+	puts movie3d.rank
 
-puts movie3d
+	puts movie3d
 
-movie3d.show_effect
-
-movie = Movie.new("goonies", 10)
-#movie.show_effect
+	movie3d.show_effect
+end
