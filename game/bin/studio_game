@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/prag_prog_game/player"
+require_relative '../lib/prag_prog_game/clumsy_player'
+require_relative '../lib/prag_prog_game/berserk_player'
+require_relative "../lib/prag_prog_game/game"
+
+knuckleheads = PragProgGame::Game.new("knuckleheads")
+
+default_from_file = File.join(File.dirname(__FILE__), 'players.csv')
+knuckleheads.load_players(ARGV.shift || default_from_file)
+
+klutz = PragProgGame::ClumsyPlayer.new("klutz", 105, 10)
+knuckleheads.add_player(klutz)
+
+berserker = PragProgGame::BerserkPlayer.new("berserker", 50)
+knuckleheads.add_player(berserker)
+
+loop do
+	puts "\nHow many rounds? ('quit to exit)"
+	response = gets.chomp.downcase
+
+	case response
+	when /^\d+$/
+		knuckleheads.play(response.to_i)
+	when "quit", "q", "exit"
+		knuckleheads.print_stats
+		default_to_file = File.join(File.dirname(__FILE__), 'high_scores.txt')
+		knuckleheads.save_high_scores(default_to_file)
+		break
+	else
+		puts "please enter a number or 'quit'"
+	end
+end

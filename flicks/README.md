@@ -1,3 +1,3 @@
-# Ruby Game
+# Ruby Movie
 
-This is the game built in the Pragmatic Studios Ruby Programming course.
+This is the little movie rating app built in the Pragmatic Studios Ruby Programming course.
